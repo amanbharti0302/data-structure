@@ -28,3 +28,17 @@ public:
 };
 
 
+////we can also do this question in o(1) sc by using recursive approach
+bool cal(TreeNode* root,long long int min,long long int max){
+    if(root==NULL)return true;
+    if(root->val<=min||root->val>=max)return false;
+    return cal(root->left,min,root->val)&cal(root->right,root->val,max);
+}
+
+
+class Solution {
+public:
+    bool isValidBST(TreeNode* root) {
+        return cal(root,INT64_MIN,INT64_MAX);
+    }
+};
