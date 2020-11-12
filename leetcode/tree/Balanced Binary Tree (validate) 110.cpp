@@ -18,10 +18,10 @@
  *     TreeNode(int x, TreeNode *left, TreeNode *right) : val(x), left(left), right(right) {}
  * };
  */
-int cal(TreeNode *root,long long int dep,bool &ch){
+int cal(TreeNode *root,bool &ch){
     if(root==NULL){return 0;}
-    int l =cal(root->left,dep+1,ch);
-    int r = cal(root->right,dep+1,ch);   
+    int l =cal(root->left,ch);
+    int r = cal(root->right,ch);   
     if(abs(r-l)>1)ch=false;
     return max(l,r)+1;
 }
@@ -31,7 +31,7 @@ public:
     bool isBalanced(TreeNode* root) {
         if(root==NULL)return true;
         bool ch=true;
-        cal(root,0,ch);
+        cal(root,ch);
         if(ch==false)return false;
         return true;
     }
