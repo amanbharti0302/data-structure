@@ -34,7 +34,7 @@ public:
     int lengthOfLongestSubstring(string s) {
         map<char,int>m;
         int ans =0,temp=0,n=s.length();
-        int l=0;   //l = strating pointer
+        int l=0;   //l = second pointer
         
         for(int i=0;i<n;i++){      //i = pointer which is ahead of l               
             if(m.find(s[i])!=m.end()){
