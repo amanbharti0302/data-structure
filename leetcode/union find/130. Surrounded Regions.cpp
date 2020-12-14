@@ -19,6 +19,9 @@ Surrounded regions shouldn’t be on the border, which means that any 'O' on the
 ===========================================>My Approach
 What i did is that i simply do grid based dfs using recursion when i get any border in region than i set boolean ch = false;
 else it is set to true and that region is stored in temp after which it is filled with 'X'
+
+
+=================================We can also do it by using union data structure
 */
 bool ch;
 int n,m;
