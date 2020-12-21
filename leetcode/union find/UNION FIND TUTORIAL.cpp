@@ -13,7 +13,7 @@ void union_set(int a,int b){
     int set1 = find_set(a);
     int set2 = find_set(b);
     if(set1==set2)return;
-    
+
     if(ra_nk[set1]<ra_nk[set2]){                        //rank and parent update
         parent[set1]=set2;   
         ra_nk[set2]+=ra_nk[set1];
@@ -29,7 +29,7 @@ int main(){
     cin>>n;
     parent.assign(n,-1);
     ra_nk.assign(n,0);
-
+    
 
     return 0;
 }

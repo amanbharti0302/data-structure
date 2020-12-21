@@ -80,7 +80,7 @@ public:
             sort(idx.begin(),idx.end());
             int y=0;
             for(auto x:idx)
-                if(x<s.length()){cout<<x<<" ";s[x]=temp[y++];}
+                if(x<s.length())s[x]=temp[y++];
         }
         
         return s;
