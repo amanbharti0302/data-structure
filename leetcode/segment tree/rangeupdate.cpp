@@ -17,10 +17,10 @@ void build(int v,int tl,int tr){
 }
 
 void push(int v){                               //update of segment tree and subtree of lazy tree whenever we reach there
-    seg[v*2]=max(seg[v*2],lazy[v]);
-    seg[v*2+1]=max(seg[2*v+1],lazy[v]);
-    lazy[v*2]=lazy[v];
-    lazy[2*v+1]=lazy[v];
+    seg[v*2]+=lazy[v];
+    seg[v*2+1]+=lazy[v];
+    lazy[v*2]+=lazy[v];
+    lazy[2*v+1]+=lazy[v];
     lazy[v] = 0;
 }
 
@@ -29,8 +29,8 @@ void push(int v){                               //update of segment tree and sub
 void update(int v,int tl,int tr,int l,int r,int val){       //update of a range 
     if(l>r){return;}
     if(tl==l&&tr==r){
-        seg[v]=val;
-        lazy[v]=val;
+        seg[v]+=val;
+        lazy[v]+=val;
         return;
     }
     push(v);
