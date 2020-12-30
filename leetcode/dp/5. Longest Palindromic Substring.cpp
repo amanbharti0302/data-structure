@@ -38,16 +38,16 @@ public:
         bool dp[n+1][n+1];
         memset(dp,false,sizeof(dp));
         
-        int maxlength = 1,ind=1;
+        int maxlength = 1,ind=1;    //maxlength = maximum length of string and ind = strating index of that maxlength
         
         for(int i=1;i<=n;i++)dp[i][i]=true;
         for(int i=1;i<n;i++)if(s[i]==s[i+1]){dp[i][i+1]=true;maxlength=2;ind=i;}
         
-        for(int k=3;k<=n;k++){
+        for(int k=3;k<=n;k++){                  //k= size of substring which we will now process
             for(int i=1;i<=n-k;i++){
-                int j = i+k-1;
+                int j = i+k-1;                  //i = starting index and j= end index of substring of length k
                 if(dp[i+1][j-1]==true&&s[i]==s[j]){
-                    dp[i][j]=true;
+                    dp[i][j]=true;      
                     maxlength =k;
                     ind  = i;
                 }
