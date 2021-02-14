@@ -52,7 +52,7 @@ node *insert_bst(node *root,int data){
 }
 
 node *get_max_leftSubtree(node *root){
-  while(root->right!=NULL)root=root->right;
+  while(root->right!=NULL){root=root->right;}
   return root;
 }
 
@@ -61,7 +61,7 @@ node *delete_bst(node *root ,int data){
   else if(data<root->data) root->left = delete_bst(root->left,data);
   else if(data>root->data) root->right = delete_bst(root->right,data);
   else{
-    if(root->left==NULL&&root->right==NULL){delete(root);return NULL;}
+    if(root->left==NULL&&root->right==NULL){delete(root);root=NULL;}
     else if(root->left == NULL){
       node * temp = root;
       root = root->right;
@@ -75,7 +75,7 @@ node *delete_bst(node *root ,int data){
     else{
       node * temp = get_max_leftSubtree(root->left);
       root->data = temp->data;
-      delete(temp);
+      root->left = delete_bst(root->left,temp->data);
     }
   }
 
@@ -115,18 +115,24 @@ int32_t main()
     cout<<"Q. 1(b)"<<endl;
     vector<int>data_to_insert = {16, 25, 3, 23, 24};
     for(auto data:data_to_insert)root = insert_bst(root,data);
-    cout<<"Inorder traverse after insertion of 16,25,3,23,24 in BST"<<endl;
+    cout<<"Inorder traverse after insertion of 16,25,3,23,24 in BST :"<<endl;
     in_order(root);
     cout<<endl<<endl;
 
-    cout<<"Q. 1(c)"<<endl;
+    cout<<"Q. 1(c), 1(e)"<<endl;
     vector<int>to_delete({42,23,22});
     for(auto data:to_delete)root = delete_bst(root,data);
-    cout<<"Inorder traverse after deleteion of 42,23,22"<<endl;
+    cout<<"Inorder traverse after deleteion of 42,23,22 :"<<endl;
     in_order(root);
     cout<<endl;
 
+    cout<<"Postorder traverse after deleteion of 42,23,22 :"<<endl;
+    post_order(root);
+    cout<<endl;
 
+    cout<<"Preorder traverse after deleteion of 42,23,22 :"<<endl;
+    pre_order(root);
+    cout<<endl;
 
   }
   cerr<<endl<<"Run Time: "<<(clock() * 1000. / CLOCKS_PER_SEC)<<" ms"<<endl;
