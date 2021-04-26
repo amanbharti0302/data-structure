@@ -32,9 +32,9 @@ public:
         
         for(int i=0;i<d.size();i++){
             if(d[i].length()>s.length()-ind)continue;
-            string temp = code(ind,d[i]);
+            string temp = code(ind,i);
             if(dp.find(temp)!=dp.end()){ans = ans|dp[temp];continue;}
-            if(s.substr(ind,x.length())==x){
+            if(s.substr(ind,d[i].length())==d[i]){
                 bool ch = dp[temp] = cal(s,ind+d[i].length(),d);
                 ans = ans|ch;
             }
