@@ -63,7 +63,6 @@ public:
                 st.push(f+temp+word);
                 i--;
             }
-            cout<<st.top()<<" ";
         }
         
         return st.top();
